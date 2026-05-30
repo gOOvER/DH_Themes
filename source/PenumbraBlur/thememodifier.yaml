@@ -1,0 +1,10 @@
+Constants:
+    - "General"
+    - ExtraMetadataPath: 'ExtraMetadata Folder Path'
+    - UseAbsoluteExtraMetadataPath: 'Use Absolute ExtraMetadata Path'
+    - DefaultBlur: 'Background Blur Radius'
+    - FilterPanelWidth: 'Filter Panel Width'
+    - "Appearance"
+    - GlyphColor: 'Accent Color (Hex)'
+    - ControlBackgroundColor: 'Panel Background Color (Hex)'
+    - GridItemCornerRadius: 'Cover Corner Radius'

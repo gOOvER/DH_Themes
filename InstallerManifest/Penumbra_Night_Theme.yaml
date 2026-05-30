@@ -1,12 +1,14 @@
 AddonId: Penumbra_Night_Theme
 Packages:
-  - Version: 1.0.0
+  - Version: 1.1.0
     RequiredApiVersion: 2.9.0
     ReleaseDate: 2026-05-30
-    PackageUrl: https://github.com/gOOvER/DH_Themes/releases/download/PenumbraNightv1.0.0/Penumbra_Night_Theme_1_0_0.pthm
+    PackageUrl: https://github.com/gOOvER/DH_Themes/releases/download/PenumbraNightv1.1.0/Penumbra_Night_Theme_1_1_0.pthm
     Changelog:
-      - Initial release as Penumbra Night (formerly DH_Night)
-      - Updated to ThemeApiVersion 2.9.0
-      - Added SearchView and HotKeyBox theme styles
-      - Fixed ExplorerPanel close button (API 2.8.0)
-      - Fixed drop shadows and virtualization issues
+      - Added themeExtras.yaml support (Library Banners for Night/Dawn)
+      - Fixed Dawn themeExtras.yaml ThemeId (Penumbra_Dawn_Theme)
+      - Added thememodifier.yaml for Blur theme
+      - Added AgeRating image support (ESRB/PEGI/RARS badges) in Details and Grid Views
+      - Added platform images (Commodore Amiga, NEC PC-9801, PICO-8 and more)
+      - Added 124 Library Banners for Night theme
+      - Added custom video Play/Pause/Mute controls for Night theme

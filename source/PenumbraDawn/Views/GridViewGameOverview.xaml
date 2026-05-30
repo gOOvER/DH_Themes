@@ -165,7 +165,24 @@
                                                 <ItemsControl Name="PART_ItemsTags" />
 
                                                 <Label Name="PART_ElemAgeRating" Content="{DynamicResource LOCAgeRatingLabel}" />
-                                                <ItemsControl Name="PART_ItemsAgeRatings" />
+                                                <ItemsControl Name="PART_ItemsAgeRatings">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Image Height="40"
+                                                                Source="{ThemeFileBinding Name, PathFormat='Images/AgeRating/{0}.png'}"
+                                                                Stretch="Uniform"
+                                                                Margin="2,2,4,2"
+                                                                ToolTip="{Binding Name}"
+                                                                RenderOptions.BitmapScalingMode="HighQuality"
+                                                                SnapsToDevicePixels="True" />
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
 
                                                 <Label Name="PART_ElemSeries" Content="{DynamicResource LOCSeriesLabel}" />
                                                 <ItemsControl Name="PART_ItemsSeries" />

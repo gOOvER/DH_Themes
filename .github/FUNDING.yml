@@ -1,13 +1,28 @@
-# These are supported funding model platforms
+# 💝 Support goovers Development
+# Your support helps maintain and improve these eggs
 
-github: gOOvER
-patreon: # Replace with a single Patreon username
-open_collective: # Replace with a single Open Collective username
-ko_fi:
-tidelift: # Replace with a single Tidelift platform-name/package-name e.g., npm/babel
-community_bridge: # Replace with a single Community Bridge project-name e.g., cloud-foundry
-liberapay: # Replace with a single Liberapay username
-issuehunt: # Replace with a single IssueHunt username
-otechie: # Replace with a single Otechie username
-lfx_crowdfunding: # Replace with a single LFX Crowdfunding project-name e.g., cloud-foundry
-custom: 'https://donate.goover.dev' # Replace with up to 4 custom sponsorship URLs e.g., ['link1', 'link2']
+# 🌟 GitHub Sponsors
+github: goover
+
+# 🎨 Creative Platform Support
+patreon: oldnoob
+
+# ☕ Coffee & Quick Support
+ko_fi: oldnoob
+buy_me_a_coffee: goover
+liberapay: goover
+
+# 🎯 Developer Appreciation
+thanks_dev: "u/gh/goover"
+
+# 🔗 Primary Donation Platform
+custom: https://donate.goover.dev
+
+# 📝 Additional platforms (not currently used)
+# open_collective: # Replace with Open Collective username
+# tidelift: # Replace with Tidelift platform-name/package-name
+# community_bridge: # Replace with Community Bridge project-name
+# liberapay: # Replace with Liberapay username
+# issuehunt: # Replace with IssueHunt username
+# lfx_crowdfunding: # Replace with LFX Crowdfunding project-name
+# polar: # Replace with Polar username

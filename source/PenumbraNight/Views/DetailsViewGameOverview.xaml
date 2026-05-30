@@ -319,7 +319,24 @@
                                                     <ItemsControl Name="PART_ItemsTags" />
 
                                                     <Label Name="PART_ElemAgeRating" Content="{DynamicResource LOCAgeRatingLabel}" />
-                                                    <ItemsControl Name="PART_ItemsAgeRatings" />
+                                                    <ItemsControl Name="PART_ItemsAgeRatings">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <WrapPanel />
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Image Height="40"
+                                                                    Source="{ThemeFileBinding Name, PathFormat='Images/AgeRating/{0}.png'}"
+                                                                    Stretch="Uniform"
+                                                                    Margin="2,2,4,2"
+                                                                    ToolTip="{Binding Name}"
+                                                                    RenderOptions.BitmapScalingMode="HighQuality"
+                                                                    SnapsToDevicePixels="True" />
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
 
                                                     <Label Name="PART_ElemSeries" Content="{DynamicResource LOCSeriesLabel}" />
                                                     <ItemsControl Name="PART_ItemsSeries" />
@@ -374,6 +391,7 @@
                                                     <Border Visibility="{PluginSettings Plugin=ExtraMetadataLoader, Path=EnableVideoPlayer, FallbackValue={x:Static Visibility.Collapsed}}">
                                                         <Border Visibility="{PluginSettings Plugin=ExtraMetadataLoader, Path=IsAnyVideoAvailable, FallbackValue={x:Static Visibility.Collapsed}}">
                                                             <Border Style="{DynamicResource PanelBorder}">
+                                                                <Grid>
                                                                 <ContentControl x:Name="ExtraMetadataLoader_VideoLoaderControl">
                                                                     <ContentControl.Resources>
                                                                         <Style x:Key="SliderThump" TargetType="{x:Type Thumb}">
@@ -533,6 +551,133 @@
                                                                         </Style>
                                                                     </ContentControl.Resources>
                                                                 </ContentControl>
+
+                                                                <!-- Video Controls Overlay -->
+                                                                <Grid HorizontalAlignment="Left"
+                                                                      VerticalAlignment="Bottom"
+                                                                      Margin="10"
+                                                                      IsHitTestVisible="True">
+                                                                    <!-- Play button -->
+                                                                    <Button Width="36" Height="36"
+                                                                            FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"
+                                                                            FontSize="14"
+                                                                            Cursor="Hand"
+                                                                            Content="&#xF5B0;"
+                                                                            Command="{Binding ElementName=ExtraMetadataLoader_VideoLoaderControl, Path=Content.VideoPlayCommand}">
+                                                                        <Button.Style>
+                                                                            <Style TargetType="Button">
+                                                                                <Setter Property="Background" Value="#AA000000"/>
+                                                                                <Setter Property="Foreground" Value="White"/>
+                                                                                <Setter Property="BorderBrush" Value="#44FFFFFF"/>
+                                                                                <Setter Property="BorderThickness" Value="1"/>
+                                                                                <Setter Property="Template">
+                                                                                    <Setter.Value>
+                                                                                        <ControlTemplate TargetType="Button">
+                                                                                            <Border Background="{TemplateBinding Background}"
+                                                                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                                                                    CornerRadius="18"
+                                                                                                    Width="{TemplateBinding Width}"
+                                                                                                    Height="{TemplateBinding Height}">
+                                                                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                                            </Border>
+                                                                                        </ControlTemplate>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding ElementName=ExtraMetadataLoader_VideoLoaderControl, Path=Content.SettingsModel.Settings.IsVideoPlaying}" Value="True">
+                                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Button.Style>
+                                                                    </Button>
+                                                                    <!-- Pause button -->
+                                                                    <Button Width="36" Height="36"
+                                                                            FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"
+                                                                            FontSize="14"
+                                                                            Cursor="Hand"
+                                                                            Content="&#xE769;"
+                                                                            Command="{Binding ElementName=ExtraMetadataLoader_VideoLoaderControl, Path=Content.VideoPauseCommand}">
+                                                                        <Button.Style>
+                                                                            <Style TargetType="Button">
+                                                                                <Setter Property="Background" Value="#AA000000"/>
+                                                                                <Setter Property="Foreground" Value="White"/>
+                                                                                <Setter Property="BorderBrush" Value="#44FFFFFF"/>
+                                                                                <Setter Property="BorderThickness" Value="1"/>
+                                                                                <Setter Property="Template">
+                                                                                    <Setter.Value>
+                                                                                        <ControlTemplate TargetType="Button">
+                                                                                            <Border Background="{TemplateBinding Background}"
+                                                                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                                                                    CornerRadius="18"
+                                                                                                    Width="{TemplateBinding Width}"
+                                                                                                    Height="{TemplateBinding Height}">
+                                                                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                                            </Border>
+                                                                                        </ControlTemplate>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding ElementName=ExtraMetadataLoader_VideoLoaderControl, Path=Content.SettingsModel.Settings.IsVideoPlaying}" Value="False">
+                                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Button.Style>
+                                                                    </Button>
+                                                                </Grid>
+
+                                                                <!-- Mute toggle -->
+                                                                <ToggleButton Width="36" Height="36"
+                                                                            FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"
+                                                                            FontSize="16"
+                                                                            Cursor="Hand"
+                                                                            HorizontalAlignment="Left"
+                                                                            VerticalAlignment="Bottom"
+                                                                            Margin="56,0,0,10"
+                                                                            Command="{Binding ElementName=ExtraMetadataLoader_VideoLoaderControl, Path=Content.VideoMuteCommand}">
+                                                                    <ToggleButton.Style>
+                                                                        <Style TargetType="ToggleButton">
+                                                                            <Setter Property="IsChecked" Value="{Binding ElementName=ExtraMetadataLoader_VideoLoaderControl, Path=Content.IsPlayerMuted, Mode=OneWay}"/>
+                                                                            <Setter Property="Background" Value="#AA000000"/>
+                                                                            <Setter Property="Foreground" Value="White"/>
+                                                                            <Setter Property="BorderBrush" Value="#44FFFFFF"/>
+                                                                            <Setter Property="BorderThickness" Value="1"/>
+                                                                            <Setter Property="Template">
+                                                                                <Setter.Value>
+                                                                                    <ControlTemplate TargetType="ToggleButton">
+                                                                                        <Border x:Name="border"
+                                                                                                Background="{TemplateBinding Background}"
+                                                                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                                                                CornerRadius="18"
+                                                                                                Width="{TemplateBinding Width}"
+                                                                                                Height="{TemplateBinding Height}">
+                                                                                            <TextBlock x:Name="Icon"
+                                                                                                    Text="&#xE767;"
+                                                                                                    FontFamily="{TemplateBinding FontFamily}"
+                                                                                                    FontSize="{TemplateBinding FontSize}"
+                                                                                                    Foreground="{TemplateBinding Foreground}"
+                                                                                                    HorizontalAlignment="Center"
+                                                                                                    VerticalAlignment="Center"/>
+                                                                                        </Border>
+                                                                                        <ControlTemplate.Triggers>
+                                                                                            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="True">
+                                                                                                <Setter TargetName="Icon" Property="Text" Value="&#xE74F;"/>
+                                                                                            </DataTrigger>
+                                                                                            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
+                                                                                                <Setter TargetName="Icon" Property="Text" Value="&#xE767;"/>
+                                                                                            </DataTrigger>
+                                                                                        </ControlTemplate.Triggers>
+                                                                                    </ControlTemplate>
+                                                                                </Setter.Value>
+                                                                            </Setter>
+                                                                        </Style>
+                                                                    </ToggleButton.Style>
+                                                                </ToggleButton>
+                                                                </Grid>
                                                             </Border>
                                                         </Border>
                                                     </Border>

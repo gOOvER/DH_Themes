@@ -1,6 +1,18 @@
 {
     "dotnet.preferCSharpExtension": true,
     "chat.tools.terminal.autoApprove": {
-        "Join-String": true
+        "Join-String": true,
+        "/^Set-Location \"X:\\\\Github Workspace\\\\playnite\\\\DH_Themes\\\\source\"\n\\$gh = \"C:\\\\Program Files\\\\GitHub CLI\\\\gh\\.exe\"\n\n& \\$gh release create PenumbraNightv1\\.0\\.0 `\n  --title \"Penumbra Night v1\\.0\\.0\" `\n  --notes \"Initial release as \\*\\*Penumbra Night\\*\\* \\(formerly DH_Night\\)\n\n- Updated to ThemeApiVersion 2\\.9\\.0\n- Added SearchView and HotKeyBox theme styles\n- Fixed ExplorerPanel close button \\(API 2\\.8\\.0\\)\n- Fixed drop shadows and virtualization issues\" `\n  --repo gOOvER/DH_Themes `\n  \"\\.\\\\Penumbra_Night_Theme_1_0_0\\.pthm\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^\\$gh = \"C:\\\\Program Files\\\\GitHub CLI\\\\gh\\.exe\"\n& \\$gh release view PenumbraNightv1\\.0\\.0 --repo gOOvER/DH_Themes --json tagName,assets \\| ConvertFrom-Json \\| Select-Object tagName, @\\{n='assets';e=\\{\\$_\\.assets\\.name\\}\\}$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh\\.exe\" release list --repo gOOvER/DH_Themes --limit 5$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     }
 }
