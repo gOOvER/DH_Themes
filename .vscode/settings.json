@@ -1,0 +1,6 @@
+{
+    "dotnet.preferCSharpExtension": true,
+    "chat.tools.terminal.autoApprove": {
+        "Join-String": true
+    }
+}
